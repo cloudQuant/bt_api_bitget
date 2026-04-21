@@ -1,15 +1,29 @@
-# bt_api_bitget
+# BITGET
 
-Bitget exchange package for `bt_api`, supporting Spot and USDT-M Perpetual swap trading.
+Exchange plugin for bt_api framework.
 
-## Features
+[![PyPI Version](https://img.shields.io/pypi/v/bt_api_bitget.svg)](https://pypi.org/project/bt_api_bitget/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/bt_api_bitget.svg)](https://pypi.org/project/bt_api_bitget/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/cloudQuant/bt_api_bitget/actions/workflows/ci.yml/badge.svg)](https://github.com/cloudQuant/bt_api_bitget/actions)
+[![Docs](https://readthedocs.org/projects/bt-api-bitget/badge/?version=latest)](https://bt-api-bitget.readthedocs.io/)
 
-- **Spot Trading**: Full REST API support for account, orders, market data
-- **USDT-M Swap**: REST API for perpetual futures trading
-- **HMAC SHA256 + Base64 Authentication**: Secure API key handling
-- **Hardcoded Configuration**: No YAML dependency — all exchange paths and kline periods are defined in code
+---
 
-## Installation
+## English | [中文](#中文)
+
+### Overview
+
+This package provides **Bitget exchange plugin for bt_api** for the [bt_api](https://github.com/cloudQuant/bt_api_py) framework. It offers a unified interface for interacting with **BITGET** exchange.
+
+### Features
+
+- Exchange integration with bt_api
+- REST API support
+- Market data access
+- Basic trading operations
+
+### Installation
 
 ```bash
 pip install bt_api_bitget
@@ -18,105 +32,158 @@ pip install bt_api_bitget
 Or install from source:
 
 ```bash
-cd packages/bt_api_bitget
+git clone https://github.com/cloudQuant/bt_api_bitget
+cd bt_api_bitget
 pip install -e .
 ```
 
-## Quick Usage
+### Quick Start
 
 ```python
-from bt_api_py import BtApi
+from bt_api_bitget import BitgetApi
 
-api = BtApi(
-    exchange_kwargs={
-        "BITGET___SPOT": {
-            "api_key": "your_api_key",
-            "secret_key": "your_secret",
-            "passphrase": "your_passphrase",
-        }
-    }
-)
+# Initialize
+feed = BitgetApi(api_key="your_key", secret="your_secret")
 
-# Query ticker
-ticker = api.get_tick("BITGET___SPOT", "BTCUSDT")
+# Get ticker data
+ticker = feed.get_ticker("BTCUSDT")
 print(ticker)
-
-# Place order
-order = api.make_order(
-    exchange_name="BITGET___SPOT",
-    symbol="BTCUSDT",
-    volume=0.001,
-    price=50000,
-    order_type="buy-limit",
-)
-print(order)
 ```
 
-## Architecture
+### Supported Operations
+
+| Operation | Status |
+|-----------|--------|
+| Ticker | ✅ |
+| OrderBook | ✅ |
+| Trades | ✅ |
+| Bars/Klines | ✅ |
+| Orders | ✅ |
+| Balances | ✅ |
+| Positions | ✅ |
+
+### Online Documentation
+
+| Resource | Link |
+|----------|------|
+| English Docs | https://bt-api-bitget.readthedocs.io/ |
+| Chinese Docs | https://bt-api-bitget.readthedocs.io/zh/latest/ |
+| GitHub Repository | https://github.com/cloudQuant/bt_api_bitget |
+| Issue Tracker | https://github.com/cloudQuant/bt_api_bitget/issues |
+
+### Requirements
+
+- Python 3.9+
+- bt_api_base >= 0.15
+
+### Architecture
 
 ```
 bt_api_bitget/
-├── __init__.py
-├── exchange_data/
-│   └── __init__.py          # BitgetExchangeData, BitgetExchangeDataSpot, BitgetExchangeDataSwap
-├── errors/
-│   ├── __init__.py           # BitgetErrorTranslator (re-export)
-│   └── bitget_translator.py  # Error code mapping
-├── containers/
-│   ├── __init__.py
-│   ├── balances/
-│   │   ├── __init__.py
-│   │   └── bitget_balance.py  # BalanceData, WssBalanceData, RequestBalanceData
-│   ├── orders/
-│   │   ├── __init__.py
-│   │   └── bitget_order.py    # OrderData, WssOrderData, RequestOrderData
-│   ├── tickers/
-│   │   ├── __init__.py
-│   │   └── bitget_ticker.py   # TickerData, WssTickerData, RequestTickerData
-│   └── orderbooks/
-│       ├── __init__.py
-│       └── bitget_orderbook.py # OrderBookData, WssOrderBookData, RequestOrderBookData
-├── feeds/
-│   └── live_bitget/
-│       ├── __init__.py
-│       ├── request_base.py    # BitgetRequestData (HMAC auth base)
-│       ├── spot.py            # BitgetRequestDataSpot + WSS placeholders
-│       └── swap.py            # BitgetRequestDataSwap + WSS placeholders
-├── registry_registration.py   # Auto-registers with ExchangeRegistry
-└── plugin.py                  # Plugin entrypoint for unified loading
+├── src/bt_api_bitget/     # Source code
+│   ├── containers/     # Data containers
+│   ├── feeds/          # API feeds
+│   ├── gateway/       # Gateway adapter
+│   └── plugin.py      # Plugin registration
+├── tests/             # Unit tests
+└── docs/             # Documentation
 ```
 
-## Dependencies
+### License
 
-- `bt_api_base>=0.15,<1.0`
+MIT License - see [LICENSE](LICENSE) for details.
+
+### Support
+
+- Report bugs via [GitHub Issues](https://github.com/cloudQuant/bt_api_bitget/issues)
+- Email: yunjinqi@gmail.com
+
+---
+
+## 中文
+
+### 概述
+
+本包为 [bt_api](https://github.com/cloudQuant/bt_api_py) 框架提供 **Bitget exchange plugin for bt_api**。它提供了与 **BITGET** 交易所交互的统一接口。
+
+### 功能特点
+
+- bt_api交易所集成
+- REST API支持
+- 市场数据访问
+- 基本交易操作
+
+### 安装
+
+```bash
+pip install bt_api_bitget
+```
+
+或从源码安装：
+
+```bash
+git clone https://github.com/cloudQuant/bt_api_bitget
+cd bt_api_bitget
+pip install -e .
+```
+
+### 快速开始
+
+```python
+from bt_api_bitget import BitgetApi
+
+# 初始化
+feed = BitgetApi(api_key="your_key", secret="your_secret")
+
+# 获取行情数据
+ticker = feed.get_ticker("BTCUSDT")
+print(ticker)
+```
+
+### 支持的操作
+
+| 操作 | 状态 |
+|------|------|
+| Ticker | ✅ |
+| OrderBook | ✅ |
+| Trades | ✅ |
+| Bars/Klines | ✅ |
+| Orders | ✅ |
+| Balances | ✅ |
+| Positions | ✅ |
+
+### 在线文档
+
+| 资源 | 链接 |
+|------|------|
+| 英文文档 | https://bt-api-bitget.readthedocs.io/ |
+| 中文文档 | https://bt-api-bitget.readthedocs.io/zh/latest/ |
+| GitHub 仓库 | https://github.com/cloudQuant/bt_api_bitget |
+| 问题反馈 | https://github.com/cloudQuant/bt_api_bitget/issues |
+
+### 系统要求
+
 - Python 3.9+
+- bt_api_base >= 0.15
 
-## Supported Endpoints
+### 架构
 
-### Spot
+```
+bt_api_bitget/
+├── src/bt_api_bitget/     # 源代码
+│   ├── containers/     # 数据容器
+│   ├── feeds/          # API 源
+│   ├── gateway/        # 网关适配器
+│   └── plugin.py       # 插件注册
+├── tests/             # 单元测试
+└── docs/             # 文档
+```
 
-| Method | Description |
-|--------|-------------|
-| `get_ticker` / `get_tick` | Query ticker data |
-| `get_depth` / `get_orderbook` | Order book depth |
-| `get_kline` / `get_klines` | K-line/candlestick data |
-| `get_server_time` | Server time |
-| `get_exchange_info` / `get_symbols` | Exchange symbols |
-| `get_balance` | Account balances |
-| `get_account` | Account info |
-| `make_order` | Place order |
-| `cancel_order` | Cancel order |
-| `query_order` | Query order status |
-| `get_deals` | Recent trades |
+### 许可证
 
-### Swap (USDT-M)
+MIT 许可证 - 详见 [LICENSE](LICENSE)。
 
-Same as Spot with swap-specific endpoints including `get_funding_rate`, `get_position`, `change_leverage`.
+### 技术支持
 
-## WebSocket
-
-WebSocket classes (`BitgetMarketWssDataSpot`, `BitgetAccountWssDataSpot`, etc.) are placeholder stubs. Full WebSocket implementation is pending.
-
-## Error Codes
-
-`BitgetErrorTranslator` maps Bitget API error messages to unified `UnifiedErrorCode` values from `bt_api_base.error`.
+- 通过 [GitHub Issues](https://github.com/cloudQuant/bt_api_bitget/issues) 反馈问题
+- 邮箱: yunjinqi@gmail.com
