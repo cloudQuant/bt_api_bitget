@@ -1,0 +1,2 @@
+[bt_api.plugins]
+bitget = bt_api_bitget.plugin:register_plugin
