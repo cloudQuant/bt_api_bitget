@@ -2,8 +2,8 @@
 
 from bt_api_bitget.containers.orders.bitget_order import (
     BitgetOrderData,
-    BitgetWssOrderData,
     BitgetRequestOrderData,
+    BitgetWssOrderData,
 )
 
 __all__ = [

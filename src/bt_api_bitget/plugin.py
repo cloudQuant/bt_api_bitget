@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-from bt_api_base.gateway.registrar import GatewayRuntimeRegistrar
+from typing import TYPE_CHECKING
+
 from bt_api_base.plugins.protocol import PluginInfo
-from bt_api_base.registry import ExchangeRegistry
 
 from bt_api_bitget import __version__
 from bt_api_bitget.registry_registration import register_bitget
+
+if TYPE_CHECKING:
+    from bt_api_base.gateway.registrar import GatewayRuntimeRegistrar
+    from bt_api_base.registry import ExchangeRegistry
 
 
 def register_plugin(

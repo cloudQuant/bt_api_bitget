@@ -19,6 +19,7 @@ from bt_api_base.exceptions import QueueNotInitializedError
 from bt_api_base.feeds.capability import Capability
 from bt_api_base.feeds.feed import Feed
 from bt_api_base.logging_factory import get_logger
+
 from bt_api_bitget.errors import BitgetErrorTranslator
 from bt_api_bitget.exchange_data import BitgetExchangeData
 

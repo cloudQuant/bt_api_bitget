@@ -5,6 +5,7 @@ import time
 
 from bt_api_base.containers.accounts.account import AccountData
 from bt_api_base.functions.utils import from_dict_get_float, from_dict_get_string
+
 from bt_api_bitget.containers.balances.bitget_balance import BitgetBalanceData
 
 

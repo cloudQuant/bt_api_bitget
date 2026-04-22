@@ -2,9 +2,9 @@
 
 from bt_api_bitget.containers.balances.bitget_balance import (
     BitgetBalanceData,
-    BitgetWssBalanceData,
     BitgetRequestBalanceData,
     BitgetSpotWssAccountData,
+    BitgetWssBalanceData,
 )
 
 __all__ = [
