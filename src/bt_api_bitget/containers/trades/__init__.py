@@ -1,8 +1,8 @@
 """Module-level docstring."""
 from bt_api_bitget.containers.trades.bitget_trade import (
+    BitgetRequestTradeData,
     BitgetTradeData,
     BitgetWssTradeData,
-    BitgetRequestTradeData,
 )
 
 __all__ = ["BitgetTradeData", "BitgetWssTradeData", "BitgetRequestTradeData"]

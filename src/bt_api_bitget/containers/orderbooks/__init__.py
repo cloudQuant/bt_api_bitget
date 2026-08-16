@@ -2,8 +2,8 @@
 
 from bt_api_bitget.containers.orderbooks.bitget_orderbook import (
     BitgetOrderBookData,
-    BitgetWssOrderBookData,
     BitgetRequestOrderBookData,
+    BitgetWssOrderBookData,
 )
 
 __all__ = [

@@ -2,19 +2,19 @@
 
 from bt_api_bitget.containers.balances import (
     BitgetBalanceData,
-    BitgetWssBalanceData,
     BitgetRequestBalanceData,
     BitgetSpotWssAccountData,
+    BitgetWssBalanceData,
 )
 from bt_api_bitget.containers.orders import (
     BitgetOrderData,
-    BitgetWssOrderData,
     BitgetRequestOrderData,
+    BitgetWssOrderData,
 )
 from bt_api_bitget.containers.tickers import (
+    BitgetRequestTickerData,
     BitgetTickerData,
     BitgetWssTickerData,
-    BitgetRequestTickerData,
 )
 
 __all__ = [

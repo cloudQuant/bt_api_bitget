@@ -6,6 +6,7 @@ from typing import Any
 
 from bt_api_base.functions.utils import update_extra_data
 from bt_api_base.logging_factory import get_logger
+
 from bt_api_bitget.containers.balances.bitget_balance import BitgetBalanceData
 from bt_api_bitget.containers.orderbooks.bitget_orderbook import BitgetOrderBookData
 from bt_api_bitget.containers.orders.bitget_order import BitgetOrderData

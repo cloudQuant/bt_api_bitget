@@ -2,14 +2,14 @@
 
 from bt_api_bitget.feeds.live_bitget.request_base import BitgetRequestData
 from bt_api_bitget.feeds.live_bitget.spot import (
-    BitgetRequestDataSpot,
-    BitgetMarketWssDataSpot,
     BitgetAccountWssDataSpot,
+    BitgetMarketWssDataSpot,
+    BitgetRequestDataSpot,
 )
 from bt_api_bitget.feeds.live_bitget.swap import (
-    BitgetRequestDataSwap,
-    BitgetMarketWssDataSwap,
     BitgetAccountWssDataSwap,
+    BitgetMarketWssDataSwap,
+    BitgetRequestDataSwap,
 )
 
 __all__ = [
