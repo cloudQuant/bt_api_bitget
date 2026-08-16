@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_bitget.containers.accounts.bitget_account import (
     BitgetAccountData,
     BitgetSpotWssAccountData,

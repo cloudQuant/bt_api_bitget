@@ -25,8 +25,7 @@ class BitgetOrderData(OrderData):
     ) -> None:
         """Initialize Bitget order data.
 
-        Args:
-            order_info: Order information from exchange (dict or JSON string)
+        Args: order_info: Order information from exchange (dict or JSON string)
             symbol_name: Symbol name for the order
             asset_type: Asset type (SPOT, FUTURE, etc.)
             has_been_json_encoded: Whether order_info is already JSON encoded

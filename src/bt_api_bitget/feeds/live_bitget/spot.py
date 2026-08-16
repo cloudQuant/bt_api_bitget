@@ -18,6 +18,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
     """Bitget Spot trading REST API feed."""
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         kwargs["asset_type"] = "spot"
         kwargs.setdefault("logger_name", "bitget_spot_feed.log")
         super().__init__(data_queue, **kwargs)
@@ -55,13 +56,16 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return result, status
 
     def get_ticker(self, symbol, extra_data=None, **kwargs):
+        """get_ticker method"""
         path, params, extra_data = self._get_ticker(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_tick(self, symbol, extra_data=None, **kwargs):
+        """get_tick method"""
         return self.get_ticker(symbol, extra_data=extra_data, **kwargs)
 
     def async_get_ticker(self, symbol, extra_data=None, **kwargs):
+        """async_get_ticker method"""
         path, params, extra_data = self._get_ticker(symbol, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data),
@@ -69,6 +73,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         )
 
     def async_get_tick(self, symbol, extra_data=None, **kwargs):
+        """async_get_tick method"""
         self.async_get_ticker(symbol, extra_data=extra_data, **kwargs)
 
     def _get_depth(self, symbol, limit=50, extra_data=None, **kwargs):
@@ -100,13 +105,16 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return result, status
 
     def get_depth(self, symbol, limit=50, extra_data=None, **kwargs):
+        """get_depth method"""
         path, params, extra_data = self._get_depth(symbol, limit, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_orderbook(self, symbol, limit=50, extra_data=None, **kwargs):
+        """get_orderbook method"""
         return self.get_depth(symbol, limit, extra_data=extra_data, **kwargs)
 
     def async_get_depth(self, symbol, limit=50, extra_data=None, **kwargs):
+        """async_get_depth method"""
         path, params, extra_data = self._get_depth(symbol, limit, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data),
@@ -140,13 +148,16 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return [data], status
 
     def get_kline(self, symbol, period="1m", limit=200, extra_data=None, **kwargs):
+        """get_kline method"""
         path, params, extra_data = self._get_kline(symbol, period, limit, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_klines(self, symbol, interval, limit=100, extra_data=None, **kwargs):
+        """get_klines method"""
         return self.get_kline(symbol, period=interval, limit=limit, extra_data=extra_data, **kwargs)
 
     def async_get_kline(self, symbol, period="1m", limit=200, extra_data=None, **kwargs):
+        """async_get_kline method"""
         path, params, extra_data = self._get_kline(symbol, period, limit, extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data),
@@ -154,6 +165,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         )
 
     def get_server_time(self, extra_data=None, **kwargs):
+        """get_server_time method"""
         request_type = "get_server_time"
         path = self._params.get_rest_path(request_type)
         params: dict[str, Any] = {}
@@ -168,6 +180,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_exchange_info(self, symbol=None, extra_data=None, **kwargs):
+        """get_exchange_info method"""
         request_type = "get_contract"
         path = self._params.get_rest_path(request_type)
         params: dict[str, Any] = {}
@@ -184,6 +197,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_symbols(self, extra_data=None, **kwargs):
+        """get_symbols method"""
         return self.get_exchange_info(extra_data=extra_data, **kwargs)
 
     def _get_balance(self, extra_data=None, **kwargs):
@@ -214,10 +228,12 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return result, status
 
     def get_balance(self, extra_data=None, **kwargs):
+        """get_balance method"""
         path, params, extra_data = self._get_balance(extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def get_account(self, symbol=None, extra_data=None, **kwargs):
+        """get_account method"""
         request_type = "get_account"
         path = self._params.get_rest_path(request_type)
         params: dict[str, Any] = {}
@@ -232,6 +248,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return self.request(path, params=params, extra_data=extra_data)
 
     def async_get_balance(self, extra_data=None, **kwargs):
+        """async_get_balance method"""
         path, params, extra_data = self._get_balance(extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data),
@@ -239,6 +256,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         )
 
     def async_get_account(self, extra_data=None, **kwargs):
+        """async_get_account method"""
         self.async_get_balance(extra_data=extra_data, **kwargs)
 
     def _make_order(
@@ -294,7 +312,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
                 for d in data
             ]
         else:
-            result = [
+                result = [
                 BitgetOrderData(data, extra_data["symbol_name"], extra_data["asset_type"], True)
             ]
         return result, status
@@ -309,6 +327,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         extra_data=None,
         **kwargs,
     ):
+        """make_order method"""
         path, body, extra_data = self._make_order(
             symbol, vol, price, order_type, client_order_id, extra_data, **kwargs
         )
@@ -324,6 +343,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         extra_data=None,
         **kwargs,
     ):
+        """async_make_order method"""
         path, body, extra_data = self._make_order(
             symbol, vol, price, order_type, client_order_id, extra_data, **kwargs
         )
@@ -352,6 +372,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return path, body, extra_data
 
     def cancel_order(self, symbol, order_id=None, client_order_id=None, extra_data=None, **kwargs):
+        """cancel_order method"""
         path, body, extra_data = self._cancel_order(
             symbol, order_id, client_order_id, extra_data, **kwargs
         )
@@ -390,12 +411,13 @@ class BitgetRequestDataSpot(BitgetRequestData):
                 for d in data
             ]
         else:
-            result = [
+                result = [
                 BitgetOrderData(data, extra_data["symbol_name"], extra_data["asset_type"], True)
             ]
         return result, status
 
     def query_order(self, symbol, order_id=None, client_order_id=None, extra_data=None, **kwargs):
+        """query_order method"""
         path, params, extra_data = self._query_order(
             symbol, order_id, client_order_id, extra_data, **kwargs
         )
@@ -418,6 +440,7 @@ class BitgetRequestDataSpot(BitgetRequestData):
         return path, params, extra_data
 
     def get_deals(self, symbol=None, limit=50, extra_data=None, **kwargs):
+        """get_deals method"""
         path, params, extra_data = self._get_deals(symbol, limit, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
@@ -426,9 +449,11 @@ class BitgetMarketWssDataSpot:
     """Placeholder for Bitget Spot Market WebSocket data handler."""
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
+        """__init__ method"""
         pass
 
     def start(self) -> None:
+        """start method"""
         pass
 
 
@@ -436,7 +461,9 @@ class BitgetAccountWssDataSpot:
     """Placeholder for Bitget Spot Account WebSocket data handler."""
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
+        """__init__ method"""
         pass
 
     def start(self) -> None:
+        """start method"""
         pass

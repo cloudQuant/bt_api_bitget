@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -9,7 +10,9 @@ from bt_api_bitget.containers.balances.bitget_balance import BitgetBalanceData
 
 
 class BitgetAccountData(AccountData):
+    """Class BitgetAccountData"""
     def __init__(self, account_info, symbol_name, asset_type, has_been_json_encoded=False):
+        """__init__ method"""
         super().__init__(account_info, has_been_json_encoded)
         self.exchange_name = "BITGET"
         self.local_update_time = time.time()
@@ -29,6 +32,7 @@ class BitgetAccountData(AccountData):
         self.has_been_init_data = False
 
     def init_data(self):
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.account_data = json.loads(self.account_info)
             self.has_been_json_encoded = True
@@ -49,6 +53,7 @@ class BitgetAccountData(AccountData):
         return self
 
     def get_all_data(self):
+        """get_all_data method"""
         if self.all_data is None:
             self.init_data()
             self.all_data = {
@@ -77,50 +82,66 @@ class BitgetAccountData(AccountData):
         return self.__str__()
 
     def get_exchange_name(self):
+        """get_exchange_name method"""
         return self.exchange_name
 
     def get_local_update_time(self):
+        """get_local_update_time method"""
         return self.local_update_time
 
     def get_symbol_name(self):
+        """get_symbol_name method"""
         return self.symbol_name
 
     def get_asset_type(self):
+        """get_asset_type method"""
         return self.asset_type
 
     def get_uid(self):
+        """get_uid method"""
         return self.uid
 
     def get_account_type(self):
+        """get_account_type method"""
         return self.account_type
 
     def get_margin_level(self):
+        """get_margin_level method"""
         return self.margin_level
 
     def get_margin_ratio(self):
+        """get_margin_ratio method"""
         return self.margin_ratio
 
     def get_margin_mode(self):
+        """get_margin_mode method"""
         return self.margin_mode
 
     def get_equity(self):
+        """get_equity method"""
         return self.equity
 
     def get_unrealized_pnl(self):
+        """get_unrealized_pnl method"""
         return self.unrealized_pnl
 
     def get_realized_pnl(self):
+        """get_realized_pnl method"""
         return self.realized_pnl
 
     def get_margin_available(self):
+        """get_margin_available method"""
         return self.margin_available
 
     def get_margin_forced(self):
+        """get_margin_forced method"""
         return self.margin_forced
 
 
 class BitgetSpotWssAccountData:
+    """Class BitgetSpotWssAccountData"""
     def __init__(self, account_info, symbol_name, asset_type, has_been_json_encoded=False):
+        """__init__ method"""
         self.exchange_name = "BITGET"
         self.local_update_time = time.time()
         self.symbol_name = symbol_name
@@ -131,6 +152,7 @@ class BitgetSpotWssAccountData:
         self.has_been_json_encoded = has_been_json_encoded
 
     def init_data(self):
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.account_info = json.loads(self.account_info)
             self.has_been_json_encoded = True
@@ -146,10 +168,12 @@ class BitgetSpotWssAccountData:
         return self
 
     def get_balances(self):
+        """get_balances method"""
         self.init_data()
         return self.balances
 
     def get_balance(self, coin):
+        """get_balance method"""
         self.init_data()
         for balance in self.balances:
             if balance.get_coin() == coin:
@@ -157,6 +181,7 @@ class BitgetSpotWssAccountData:
         return None
 
     def get_total_equity(self):
+        """get_total_equity method"""
         self.init_data()
         total = 0.0
         for balance in self.balances:

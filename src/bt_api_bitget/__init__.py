@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 __version__ = "0.15.0"
 
 from bt_api_bitget.exchange_data import (

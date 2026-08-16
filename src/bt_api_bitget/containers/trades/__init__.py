@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_bitget.containers.trades.bitget_trade import (
     BitgetTradeData,
     BitgetWssTradeData,

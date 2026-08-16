@@ -26,8 +26,7 @@ class BitgetOrderBookData(OrderBookData):
     ) -> None:
         """Initialize Bitget order book data.
 
-        Args:
-            orderbook_info: Raw order book data (JSON string or dict)
+        Args: orderbook_info: Raw order book data (JSON string or dict)
             symbol_name: Trading pair name
             asset_type: Asset type (e.g., 'SPOT', 'SWAP')
             has_been_json_encoded: Whether data is already JSON encoded

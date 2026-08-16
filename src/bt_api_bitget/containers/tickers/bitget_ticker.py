@@ -17,8 +17,7 @@ class BitgetTickerData(TickerData):
     def __init__(self, ticker_info, symbol_name, asset_type, has_been_json_encoded=False) -> None:
         """Initialize Bitget ticker data.
 
-        Args:
-            ticker_info: Raw ticker data from Bitget API
+        Args: ticker_info: Raw ticker data from Bitget API
             symbol_name: Trading symbol name
             asset_type: Asset type (e.g., 'SPOT', 'SWAP')
             has_been_json_encoded: Whether data is already JSON encoded

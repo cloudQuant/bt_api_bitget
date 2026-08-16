@@ -90,33 +90,27 @@ class BitgetExchangeData(ExchangeData):
     def get_symbol(self, symbol: str) -> str:
         """Format trading pair name for Bitget.
 
-        Args:
-            symbol: Raw trading pair name (e.g., 'BTC-USDT')
+        Args: symbol: Raw trading pair name (e.g., 'BTC-USDT')
 
-        Returns:
-            str: Formatted trading pair name (e.g., 'BTCUSDT')
+        Returns: str: Formatted trading pair name (e.g., 'BTCUSDT')
         """
         return symbol.replace("-", "").replace("/", "").upper()
 
     def get_period(self, period: str) -> str:
         """Convert period name.
 
-        Args:
-            period: Period name (e.g., '1m', '1h')
+        Args: period: Period name (e.g., '1m', '1h')
 
-        Returns:
-            str: Converted period name
+        Returns: str: Converted period name
         """
         return self.kline_periods.get(period, period)
 
     def get_rest_path(self, request_type: str, **kwargs: Any) -> str:
         """Get REST API endpoint path.
 
-        Args:
-            request_type: Request type key
+        Args: request_type: Request type key
 
-        Returns:
-            str: REST API path
+        Returns: str: REST API path
         """
         if request_type not in self.rest_paths or self.rest_paths[request_type] == "":
             self.raise_path_error(self.exchange_name, request_type)

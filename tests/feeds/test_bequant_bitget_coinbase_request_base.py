@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from unittest.mock import AsyncMock
 import pytest
 from bt_api_base.containers.requestdatas.request_data import RequestData
@@ -7,12 +8,14 @@ from bt_api_coinbase.feeds.live_coinbase.request_base import CoinbaseRequestData
 
 
 def test_bitget_defaults_exchange_name() -> None:
+    """test_bitget_defaults_exchange_name function"""
     request_data = BitgetRequestData(public_key="public-key", private_key="secret-key")
 
     assert request_data.exchange_name == "BITGET___SPOT"
 
 
 def test_bequant_request_allows_missing_extra_data(monkeypatch) -> None:
+    """test_bequant_request_allows_missing_extra_data function"""
     request_data = BeQuantRequestData(
         public_key="public-key",
         private_key="secret-key",
@@ -33,6 +36,7 @@ def test_bequant_request_allows_missing_extra_data(monkeypatch) -> None:
 
 
 async def test_bitget_async_request_allows_missing_extra_data(monkeypatch) -> None:
+    """test_bitget_async_request_allows_missing_extra_data function"""
     request_data = BitgetRequestData(
         public_key="public-key",
         private_key="secret-key",
@@ -50,6 +54,7 @@ async def test_bitget_async_request_allows_missing_extra_data(monkeypatch) -> No
 
 
 def test_coinbase_request_allows_missing_extra_data(monkeypatch) -> None:
+    """test_coinbase_request_allows_missing_extra_data function"""
     request_data = CoinbaseRequestData(
         None,
         public_key="public-key",
@@ -71,6 +76,7 @@ def test_coinbase_request_allows_missing_extra_data(monkeypatch) -> None:
 
 
 def test_bitget_accepts_api_key_and_api_secret_aliases() -> None:
+    """test_bitget_accepts_api_key_and_api_secret_aliases function"""
     request_data = BitgetRequestData(api_key="public-key", api_secret="secret-key")
 
     assert request_data.public_key == "public-key"
@@ -78,6 +84,7 @@ def test_bitget_accepts_api_key_and_api_secret_aliases() -> None:
 
 
 def test_coinbase_accepts_api_secret_aliases() -> None:
+    """test_coinbase_accepts_api_secret_aliases function"""
     request_data = CoinbaseRequestData(
         None,
         api_key="public-key",

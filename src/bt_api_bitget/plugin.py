@@ -13,6 +13,7 @@ from bt_api_bitget.registry_registration import register_bitget
 def register_plugin(
     registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]
 ) -> PluginInfo:
+    """register_plugin function"""
     register_bitget(registry)
 
     return PluginInfo(

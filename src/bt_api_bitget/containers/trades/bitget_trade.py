@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -8,7 +9,9 @@ from bt_api_base.functions.utils import from_dict_get_float, from_dict_get_strin
 
 
 class BitgetTradeData(TradeData):
+    """Class BitgetTradeData"""
     def __init__(self, trade_info, symbol_name, asset_type, has_been_json_encoded=False):
+        """__init__ method"""
         super().__init__(trade_info, has_been_json_encoded)
         self.exchange_name = "BITGET"
         self.local_update_time = time.time()
@@ -29,6 +32,7 @@ class BitgetTradeData(TradeData):
         self.has_been_init_data = False
 
     def init_data(self):
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.trade_data = json.loads(self.trade_info)
             self.has_been_json_encoded = True
@@ -54,6 +58,7 @@ class BitgetTradeData(TradeData):
         return self
 
     def get_all_data(self):
+        """get_all_data method"""
         if self.all_data is None:
             self.init_data()
             self.all_data = {
@@ -83,53 +88,70 @@ class BitgetTradeData(TradeData):
         return self.__str__()
 
     def get_exchange_name(self):
+        """get_exchange_name method"""
         return self.exchange_name
 
     def get_local_update_time(self):
+        """get_local_update_time method"""
         return self.local_update_time
 
     def get_symbol_name(self):
+        """get_symbol_name method"""
         return self.symbol_name
 
     def get_asset_type(self):
+        """get_asset_type method"""
         return self.asset_type
 
     def get_trade_id(self):
+        """get_trade_id method"""
         return self.trade_id
 
     def get_order_id(self):
+        """get_order_id method"""
         return self.order_id
 
     def get_symbol(self):
+        """get_symbol method"""
         return self.symbol
 
     def get_side(self):
+        """get_side method"""
         return self.side
 
     def get_order_type(self):
+        """get_order_type method"""
         return self.order_type
 
     def get_price(self):
+        """get_price method"""
         return self.price
 
     def get_size(self):
+        """get_size method"""
         return self.size
 
     def get_fee(self):
+        """get_fee method"""
         return self.fee
 
     def get_fee_currency(self):
+        """get_fee_currency method"""
         return self.fee_currency
 
     def get_time(self):
+        """get_time method"""
         return self.time
 
     def get_is_maker(self):
+        """get_is_maker method"""
         return self.is_maker
 
 
 class BitgetWssTradeData(BitgetTradeData):
+    """Class BitgetWssTradeData"""
     def init_data(self):
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.trade_data = json.loads(self.trade_info)
             self.has_been_json_encoded = True
@@ -152,7 +174,9 @@ class BitgetWssTradeData(BitgetTradeData):
 
 
 class BitgetRequestTradeData(BitgetTradeData):
+    """Class BitgetRequestTradeData"""
     def init_data(self):
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.trade_data = json.loads(self.trade_info)
             self.has_been_json_encoded = True

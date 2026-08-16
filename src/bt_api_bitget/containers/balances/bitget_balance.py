@@ -22,8 +22,7 @@ class BitgetBalanceData(BalanceData):
     ) -> None:
         """Initialize Bitget balance data.
 
-        Args:
-            balance_info: Raw balance data from Bitget API
+        Args: balance_info: Raw balance data from Bitget API
             symbol_name: Trading symbol name
             asset_type: Asset type (e.g., 'SPOT', 'SWAP')
             has_been_json_encoded: Whether data is already JSON encoded
@@ -50,8 +49,7 @@ class BitgetBalanceData(BalanceData):
     def init_data(self) -> BitgetBalanceData:
         """Initialize and parse the balance data.
 
-        Returns:
-            Self for method chaining
+        Returns: Self for method chaining
         """
         if not self.has_been_json_encoded:
             self.balance_data = json.loads(self.balance_info)
@@ -75,8 +73,7 @@ class BitgetBalanceData(BalanceData):
     def get_all_data(self) -> dict[str, Any]:
         """Get all balance data as a dictionary.
 
-        Returns:
-            Dictionary containing all balance data fields
+        Returns: Dictionary containing all balance data fields
         """
         if self.all_data is None:
             self.init_data()

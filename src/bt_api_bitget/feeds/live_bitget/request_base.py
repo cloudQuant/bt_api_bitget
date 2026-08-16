@@ -44,6 +44,7 @@ class BitgetRequestData(Feed):
         }
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.data_queue = data_queue
         self.public_key = kwargs.get("public_key") or kwargs.get("api_key")
@@ -60,6 +61,7 @@ class BitgetRequestData(Feed):
         self._error_translator = BitgetErrorTranslator()
 
     def translate_error(self, raw_response):
+        """translate_error method"""
         if isinstance(raw_response, dict):
             code = raw_response.get("code", "00000")
             if code != "00000":
@@ -67,10 +69,10 @@ class BitgetRequestData(Feed):
         return None
 
     def push_data_to_queue(self, data):
+        """push_data_to_queue method"""
         if self.data_queue is not None:
             self.data_queue.put(data)
-        else:
-            raise QueueNotInitializedError("data_queue not initialized")
+        else: raise QueueNotInitializedError("data_queue not initialized")
 
     def _generate_signature(self, message):
         pk = self.private_key or ""
@@ -91,6 +93,7 @@ class BitgetRequestData(Feed):
         }
 
     def request(self, path, params=None, body=None, extra_data=None, timeout=10):
+        """request method"""
         if params is None:
             params: dict[str, Any] = {}
         if extra_data is None:
@@ -122,6 +125,7 @@ class BitgetRequestData(Feed):
         return RequestData(res, extra_data)
 
     async def async_request(self, path, params=None, body=None, extra_data=None, timeout=5):
+        """async_request method"""
         if params is None:
             params: dict[str, Any] = {}
         if extra_data is None:
@@ -153,6 +157,7 @@ class BitgetRequestData(Feed):
         return RequestData(res, extra_data)
 
     def async_callback(self, future):
+        """async_callback method"""
         try:
             result = future.result()
             self.push_data_to_queue(result)
