@@ -451,11 +451,9 @@ class BitgetMarketWssDataSpot:
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
         """__init__ method"""
-        pass
 
     def start(self) -> None:
         """start method"""
-        pass
 
 
 class BitgetAccountWssDataSpot:
@@ -463,8 +461,6 @@ class BitgetAccountWssDataSpot:
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
         """__init__ method"""
-        pass
 
     def start(self) -> None:
         """start method"""
-        pass

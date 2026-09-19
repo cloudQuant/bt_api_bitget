@@ -1,10 +1,11 @@
 """Module-level docstring."""
 from unittest.mock import AsyncMock
-import pytest
+
 from bt_api_base.containers.requestdatas.request_data import RequestData
 from bt_api_bequant.feeds.live_bequant.request_base import BeQuantRequestData
-from bt_api_bitget.feeds.live_bitget.request_base import BitgetRequestData
 from bt_api_coinbase.feeds.live_coinbase.request_base import CoinbaseRequestData
+
+from bt_api_bitget.feeds.live_bitget.request_base import BitgetRequestData
 
 
 def test_bitget_defaults_exchange_name() -> None:

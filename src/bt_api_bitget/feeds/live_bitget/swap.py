@@ -368,11 +368,9 @@ class BitgetMarketWssDataSwap:
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
         """__init__ method"""
-        pass
 
     def start(self) -> None:
         """start method"""
-        pass
 
 
 class BitgetAccountWssDataSwap:
@@ -380,8 +378,6 @@ class BitgetAccountWssDataSwap:
 
     def __init__(self, data_queue: str, **kwargs: object) -> None:
         """__init__ method"""
-        pass
 
     def start(self) -> None:
         """start method"""
-        pass
