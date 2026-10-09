@@ -1,4 +1,4 @@
-# BITGET
+﻿# BITGET
 
 Exchange plugin for bt_api framework.
 

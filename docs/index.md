@@ -1,4 +1,4 @@
-# BITGET Documentation
+﻿# BITGET Documentation
 
 ## English
 
