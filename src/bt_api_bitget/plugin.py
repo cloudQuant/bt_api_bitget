@@ -10,13 +10,10 @@ from bt_api_bitget import __version__
 from bt_api_bitget.registry_registration import register_bitget
 
 if TYPE_CHECKING:
-    from bt_api_base.gateway.registrar import GatewayRuntimeRegistrar
     from bt_api_base.registry import ExchangeRegistry
 
 
-def register_plugin(
-    registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]
-) -> PluginInfo:
+def register_plugin(registry: type[ExchangeRegistry]) -> PluginInfo:
     """register_plugin function"""
     register_bitget(registry)
 
