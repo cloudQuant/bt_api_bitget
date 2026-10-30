@@ -16,6 +16,10 @@ Exchange plugin for bt_api framework.
 
 This package provides **Bitget exchange plugin for bt_api** for the [bt_api](https://github.com/cloudQuant/bt_api_py) framework. It offers a unified interface for interacting with **BITGET** exchange.
 
+### Provider and framework boundary
+
+This package implements Bitget REST request feeds, market/account WebSocket streams, and exchange-data normalization. Its `bt_api.plugins` entry point calls `register_plugin(registry)` through `bt_api_base.PluginLoader`; importing the package alone does not register it. `bt_api_py` provides the `BtApi` facade and coordinates provider calls and streams, while Backtrader supplies the strategy and engine layer. This code wiring is not live-account acceptance. See [Trading System Architecture](https://github.com/cloudQuant/backtrader/blob/dev/docs/TRADING_SYSTEM_ARCHITECTURE.md).
+
 ### Features
 
 - Exchange integration with bt_api
@@ -105,6 +109,10 @@ MIT License - see [LICENSE](LICENSE) for details.
 ### 概述
 
 本包为 [bt_api](https://github.com/cloudQuant/bt_api_py) 框架提供 **Bitget exchange plugin for bt_api**。它提供了与 **BITGET** 交易所交互的统一接口。
+
+### Provider 与框架职责边界
+
+本包实现 Bitget REST 请求 feed、行情/账户 WebSocket stream 和交易所数据标准化。安装包的 `bt_api.plugins` 入口由 `bt_api_base.PluginLoader` 显式调用 `register_plugin(registry)`；单独导入不会注册。`bt_api_py` 提供 `BtApi` 外观并协调 provider 调用和流，Backtrader 提供策略与引擎层。源码接线不代表已通过真实账户验收。参见[交易系统架构](https://github.com/cloudQuant/backtrader/blob/dev/docs/TRADING_SYSTEM_ARCHITECTURE.md)。
 
 ### 功能特点
 
