@@ -38,6 +38,10 @@ bitget = "bt_api_bitget.plugin:register_plugin"
 BITGET___SPOT = "bt_api_base.order_identity_projection:project_legacy_order_identity"
 BITGET___SWAP = "bt_api_base.order_identity_projection:project_legacy_order_identity"
 
+[project.entry-points."bt_api.order_request_projections"]
+BITGET___SPOT = "bt_api_base.order_request_projection:legacy_order_request_projection"
+BITGET___SWAP = "bt_api_base.order_request_projection:legacy_order_request_projection"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
