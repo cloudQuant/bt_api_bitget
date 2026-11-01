@@ -34,6 +34,10 @@ Repository = "https://github.com/cloudQuant/bt_api"
 [project.entry-points."bt_api.plugins"]
 bitget = "bt_api_bitget.plugin:register_plugin"
 
+[project.entry-points."bt_api.order_identity_projections"]
+BITGET___SPOT = "bt_api_base.order_identity_projection:project_legacy_order_identity"
+BITGET___SWAP = "bt_api_base.order_identity_projection:project_legacy_order_identity"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
